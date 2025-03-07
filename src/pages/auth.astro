@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+    <div class="auth-container">
+        <div class="panels-container">
+            <div class="panels" id="panels">
+               
+                <div class="panel login-panel">
+                    <h2>Área do Paciente</h2>
+                    <form class="auth-form">
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <input 
+                                type="email" 
+                                id="login-email" 
+                                name="email" 
+                                placeholder="Digite seu email"
+                                required 
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Senha</label>
+                            <input 
+                                type="password" 
+                                id="login-password" 
+                                name="password" 
+                                placeholder="Digite sua senha"
+                                required 
+                            />
+                        </div>
+                        <button type="submit">Entrar</button>
+                        <div class="form-footer">
+                            <a href="/forgot-password">Esqueceu a senha?</a>
+                            <p>
+                                Não tem uma conta? 
+                                <a href="#" class="toggle-panel" data-panel="register">Cadastre-se</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="panel register-panel">
+                    <h2>Criar Conta</h2>
+                    <form class="auth-form">
+                        <div class="form-group">
+                            <label for="register-name">Nome Completo</label>
+                            <input 
+                                type="text" 
+                                id="register-name" 
+                                name="name" 
+                                placeholder="Digite seu nome"
+                                required 
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <input 
+                                type="email" 
+                                id="register-email" 
+                                name="email" 
+                                placeholder="Digite seu email"
+                                required 
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Senha</label>
+                            <input 
+                                type="password" 
+                                id="register-password" 
+                                name="password" 
+                                placeholder="Digite sua senha"
+                                required 
+                            />
+                        </div>
+                        <button type="submit">Cadastrar</button>
+                        <div class="form-footer">
+                            <p>
+                                Já tem uma conta? 
+                                <a href="#" class="toggle-panel" data-panel="login">Fazer Login</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .auth-container {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        padding: 1rem;
+    }
+
+    .panels-container {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        overflow: hidden;
+    }
+
+    .panels {
+        display: flex;
+        width: 200%; 
+        transform: translateX(0);
+        transition: transform 0.5s ease;
+    }
+
+    .panel {
+        width: 50%; 
+        padding: 0 1rem;
+    }
+
+    
+    .register-panel {
+        transform: none;
+    }
+
+    h2 {
+        color: var(--text-color);
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 1.8rem;
+    }
+
+    .auth-form {
+        width: 100%;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--text-color);
+        font-weight: 500;
+    }
+
+    input {
+        width: 100%;
+        padding: 0.8rem;
+        border: 2px solid #eee;
+        border-radius: 10px;
+        transition: border-color 0.3s ease;
+        font-size: 1rem;
+    }
+
+    input:focus {
+        outline: none;
+        border-color: var(--primary-color);
+    }
+
+    button {
+        width: 100%;
+        padding: 1rem;
+        background: var(--primary-color);
+        color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        background: var(--secondary-color);
+        transform: translateY(-2px);
+    }
+
+    .form-footer {
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+
+    .form-footer a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .form-footer a:hover {
+        color: var(--secondary-color);
+    }
+
+    .form-footer p {
+        margin-top: 1rem;
+        color: var(--text-color);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const panels = document.getElementById('panels');
+        const toggleButtons = document.querySelectorAll('.toggle-panel');
+
+        toggleButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetPanel = button.getAttribute('data-panel');
+                
+                if (targetPanel === 'register') {
+                    panels.style.transform = 'translateX(-50%)'; 
+                } else {
+                    panels.style.transform = 'translateX(0)';
+                }
+            });
+        });
+    });
+</script>

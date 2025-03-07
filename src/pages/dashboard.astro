@@ -1,0 +1,267 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+    <div class="dashboard">
+      
+        <aside class="topics-sidebar">
+            <div class="topics-header">
+                <h3>Meus Tópicos</h3>
+                <button class="new-topic-btn">+ Novo Tópico</button>
+            </div>
+            <div class="topics-list">
+               
+                <div class="topic-item active">
+                    <span class="topic-title">Ansiedade no trabalho</span>
+                    <span class="topic-date">24/01/2024</span>
+                </div>
+                <div class="topic-item">
+                    <span class="topic-title">Relacionamento familiar</span>
+                    <span class="topic-date">22/01/2024</span>
+                </div>
+            </div>
+        </aside>
+
+        
+        <main class="chat-area">
+            <div class="chat-container">
+                <div class="messages">
+                    
+                    <div class="message patient">
+                        <div class="message-content">
+                            <p>Hoje foi um dia difícil no trabalho...</p>
+                        </div>
+                        <div class="message-time">14:30</div>
+                    </div>
+                    <div class="message therapist">
+                        <div class="message-content">
+                            <p>Entendo como você se sente. Pode me contar mais sobre o que aconteceu?</p>
+                        </div>
+                        <div class="message-time">14:35</div>
+                    </div>
+                </div>
+
+                <div class="message-input">
+                    <textarea 
+                        placeholder="Digite sua mensagem aqui..."
+                        rows="3"
+                    ></textarea>
+                    <button class="send-button">
+                        Enviar
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+</Layout>
+
+<style>
+    /* Atualizando variáveis de cores e estilos base */
+    :root {
+        --primary-gradient: linear-gradient(135deg, #7C96AB 0%, #9EB8D0 100%);
+        --secondary-gradient: linear-gradient(135deg, #BFCCB5 0%, #D4E4C8 100%);
+        --message-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        --hover-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .dashboard {
+        display: flex;
+        height: 100vh;
+        background-color: #f8fafc;
+    }
+
+    
+    .topics-sidebar {
+        width: 320px;
+        background: white;
+        border-right: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 2px 0 20px rgba(0, 0, 0, 0.03);
+    }
+
+    .topics-header {
+        padding: 1.5rem;
+        background: var(--primary-gradient);
+        color: white;
+    }
+
+    .topics-header h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+    }
+
+    .new-topic-btn {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        color: white;
+        font-weight: 500;
+        padding: 0.875rem;
+        border-radius: 12px;
+        transition: var(--hover-transition);
+    }
+
+    .new-topic-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+    }
+
+    .topic-item {
+        margin: 0.5rem;
+        padding: 1rem;
+        border-radius: 12px;
+        border: 1px solid transparent;
+    }
+
+    .topic-item:hover {
+        background: var(--secondary-gradient);
+        border-color: rgba(0, 0, 0, 0.05);
+        transform: translateY(-1px);
+    }
+
+    .topic-item.active {
+        background: var(--primary-gradient);
+        color: white;
+    }
+
+    
+    .chat-area {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    }
+
+    .chat-container {
+        max-width: 900px;
+        padding: 2rem;
+    }
+
+    .message {
+        max-width: 70%;
+        animation: messageSlide 0.3s ease-out;
+    }
+
+    @keyframes messageSlide {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .message-content {
+        padding: 1.2rem;
+        border-radius: 16px;
+        box-shadow: var(--message-shadow);
+        line-height: 1.5;
+    }
+
+    .message.patient .message-content {
+        background: var(--primary-gradient);
+        color: white;
+    }
+
+    .message.therapist .message-content {
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .message-input {
+        background: white;
+        border-radius: 16px;
+        padding: 1.2rem;
+        box-shadow: var(--message-shadow);
+        margin-top: 2rem;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: var(--hover-transition);
+    }
+
+    .message-input:focus-within {
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+    }
+
+    textarea {
+        min-height: 80px;
+        padding: 0.8rem;
+        border-radius: 12px;
+        background: #f8fafc;
+        transition: var(--hover-transition);
+    }
+
+    textarea:focus {
+        background: white;
+    }
+
+    .send-button {
+        background: var(--primary-gradient);
+        padding: 1rem;
+        border-radius: 12px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        transition: var(--hover-transition);
+    }
+
+    .send-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(124, 150, 171, 0.3);
+    }
+
+   
+    @media (max-width: 768px) {
+        .topics-sidebar {
+            position: fixed;
+            left: -320px;
+            top: 0;
+            bottom: 0;
+            transition: var(--hover-transition);
+            z-index: 1000;
+        }
+
+        .topics-sidebar.active {
+            left: 0;
+        }
+
+        .chat-container {
+            padding: 1rem;
+        }
+
+        .message {
+            max-width: 85%;
+        }
+    }
+</style>
+
+<script>
+    // Lógica para criar novo tópico
+    const newTopicBtn = document.querySelector('.new-topic-btn');
+    newTopicBtn?.addEventListener('click', () => {
+        const title = prompt('Digite o título do novo tópico:');
+        if (title) {
+           
+            console.log('Novo tópico:', title);
+        }
+    });
+
+    // Lógica para enviar mensagem
+    const sendButton = document.querySelector('.send-button');
+    const textarea = document.querySelector('textarea');
+
+    sendButton?.addEventListener('click', () => {
+        const message = textarea?.value.trim();
+        if (message) {
+           
+            console.log('Mensagem:', message);
+            if (textarea) textarea.value = '';
+        }
+    });
+
+    
+    textarea?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendButton?.click();
+        }
+    });
+</script>
