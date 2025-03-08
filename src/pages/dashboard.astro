@@ -261,7 +261,7 @@ import Layout from '../layouts/Layout.astro';
     textarea?.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            sendButton?.click();
+            (sendButton as HTMLElement)?.click();
         }
     });
 </script>

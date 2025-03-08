@@ -5,7 +5,7 @@ import { Image } from 'astro:assets';
 <div class="container">
     <header>
         <nav>
-            <div class="logo">PsiCare</div>
+            <div class="logo">Psi Jess</div>
             <div class="nav-links">
                 <a href="/login">Área do Paciente</a>
                 <a href="/about" class="highlight">Sobre</a>
@@ -16,9 +16,16 @@ import { Image } from 'astro:assets';
     <main>
         <section class="hero">
             <div class="hero-content">
+                <Image 
+                    src="/src/assets/loginsvg.svg" 
+                    alt="Welcome illustration" 
+                    width={400} 
+                    height={300}
+                    class="hero-image"
+                />
                 <h1>Bem-vindo ao seu espaço de cuidado</h1>
-                <p>Um ambiente seguro e acolhedor para seu desenvolvimento pessoal</p>
-                <a href="/auth" class="cta-button">Começar Jornada</a>
+                <p>Um ambiente seguro e acolhedor</p>
+                <a href="/auth" class="cta-button">Comece aqui!</a>
             </div>
         </section>
     </main>
@@ -28,6 +35,7 @@ import { Image } from 'astro:assets';
     :root {
        
         --primary-color: #7C96AB;
+        --opacity-color-button: #597c99;
         --secondary-color: #BFCCB5;
         --accent-color: #EDC6B1;
         --background-color: #F7F7F7;
@@ -86,7 +94,7 @@ import { Image } from 'astro:assets';
     }
 
     .nav-links a.highlight:hover {
-        background-color: var(--secondary-color);
+        background-color: var(--opacity-color-button);
         transform: translateY(-2px);
     }
 
@@ -125,7 +133,7 @@ import { Image } from 'astro:assets';
     .cta-button {
         display: inline-block;
         padding: 1rem 2.5rem;
-        background-color: var(--accent-color);
+        background-color: var(--primary-color);
         color: var(--text-color);
         text-decoration: none;
         border-radius: 30px;
@@ -137,6 +145,8 @@ import { Image } from 'astro:assets';
     .cta-button:hover {
         transform: translateY(-3px);
         box-shadow: 0 6px 20px var(--shadow-color);
+        background-color: var(--opacity-color-button);
+    
     }
 
     @media (max-width: 768px) {
@@ -152,4 +162,17 @@ import { Image } from 'astro:assets';
             font-size: 1rem;
         }
     }
+
+    .hero-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .hero-image {
+        width: 300px;
+    }
+}
 </style>
+

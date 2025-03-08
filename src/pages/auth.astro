@@ -202,7 +202,7 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-        const panels = document.getElementById('panels');
+        const panels = document.getElementsByClassName('panels');
         const toggleButtons = document.querySelectorAll('.toggle-panel');
 
         toggleButtons.forEach(button => {
@@ -210,11 +210,10 @@ import Layout from '../layouts/Layout.astro';
                 e.preventDefault();
                 const targetPanel = button.getAttribute('data-panel');
                 
-                if (targetPanel === 'register') {
-                    panels.style.transform = 'translateX(-50%)'; 
-                } else {
-                    panels.style.transform = 'translateX(0)';
-                }
+                (panels[0] as HTMLElement).style.transition = 'transform 0.5s ease';
+                (panels[0] as HTMLElement).style.transform = targetPanel === 'register'
+                    ? 'translateX(-50%)' 
+                    : 'translateX(0)';
             });
         });
     });
