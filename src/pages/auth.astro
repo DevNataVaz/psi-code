@@ -1,220 +1,328 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 ---
 
-<Layout>
-    <div class="auth-container">
-        <div class="panels-container">
-            <div class="panels" id="panels">
-               
-                <div class="panel login-panel">
-                    <h2>Área do Paciente</h2>
-                    <form class="auth-form">
-                        <div class="form-group">
-                            <label for="login-email">Email</label>
-                            <input 
-                                type="email" 
-                                id="login-email" 
-                                name="email" 
-                                placeholder="Digite seu email"
-                                required 
-                            />
-                        </div>
-                        <div class="form-group">
-                            <label for="login-password">Senha</label>
-                            <input 
-                                type="password" 
-                                id="login-password" 
-                                name="password" 
-                                placeholder="Digite sua senha"
-                                required 
-                            />
-                        </div>
-                        <button type="submit">Entrar</button>
-                        <div class="form-footer">
-                            <a href="/forgot-password">Esqueceu a senha?</a>
-                            <p>
-                                Não tem uma conta? 
-                                <a href="#" class="toggle-panel" data-panel="register">Cadastre-se</a>
-                            </p>
-                        </div>
-                    </form>
+<div class="container">
+    <div class="form-image">
+        <Image 
+                    src="/src/assets/img/undraw_shopping_re_3wst.svg" 
+                    alt="Imagem de login" 
+                    width={400} 
+                    height={300}
+                    class="hero-image"
+                />
+       
+    </div>
+    <div class="form">
+        <form action="#">
+            <div class="form-header">
+                <div class="title">
+                    <h1>Cadastre-se</h1>
                 </div>
-
-                <div class="panel register-panel">
-                    <h2>Criar Conta</h2>
-                    <form class="auth-form">
-                        <div class="form-group">
-                            <label for="register-name">Nome Completo</label>
-                            <input 
-                                type="text" 
-                                id="register-name" 
-                                name="name" 
-                                placeholder="Digite seu nome"
-                                required 
-                            />
-                        </div>
-                        <div class="form-group">
-                            <label for="register-email">Email</label>
-                            <input 
-                                type="email" 
-                                id="register-email" 
-                                name="email" 
-                                placeholder="Digite seu email"
-                                required 
-                            />
-                        </div>
-                        <div class="form-group">
-                            <label for="register-password">Senha</label>
-                            <input 
-                                type="password" 
-                                id="register-password" 
-                                name="password" 
-                                placeholder="Digite sua senha"
-                                required 
-                            />
-                        </div>
-                        <button type="submit">Cadastrar</button>
-                        <div class="form-footer">
-                            <p>
-                                Já tem uma conta? 
-                                <a href="#" class="toggle-panel" data-panel="login">Fazer Login</a>
-                            </p>
-                        </div>
-                    </form>
+                <div class="login-button">
+                    <button><a href="#">Entrar</a></button>
                 </div>
             </div>
-        </div>
-    </div>
-</Layout>
 
-<style>
-    .auth-container {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-        padding: 1rem;
-    }
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="firstname">Nome e Sobrenome do Paciente</label>
+                    <input id="firstname" type="text" name="firstname" placeholder="Digite seu primeiro nome" required>
+                </div>
 
-    .panels-container {
-        background: white;
-        padding: 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 400px;
-        overflow: hidden;
-    }
+                <!-- <div class="input-box">
+                    <label for="lastname">Sobrenome</label>
+                    <input id="lastname" type="text" name="lastname" placeholder="Digite seu sobrenome" required>
+                </div> -->
+                <div class="input-box">
+                    <label for="email">E-mail</label>
+                    <input id="email" type="email" name="email" placeholder="Digite seu e-mail" required>
+                </div>
 
-    .panels {
-        display: flex;
-        width: 200%; 
-        transform: translateX(0);
-        transition: transform 0.5s ease;
-    }
-
-    .panel {
-        width: 50%; 
-        padding: 0 1rem;
-    }
-
-    
-    .register-panel {
-        transform: none;
-    }
-
-    h2 {
-        color: var(--text-color);
-        text-align: center;
-        margin-bottom: 2rem;
-        font-size: 1.8rem;
-    }
-
-    .auth-form {
-        width: 100%;
-    }
-
-    .form-group {
-        margin-bottom: 1.5rem;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 0.5rem;
-        color: var(--text-color);
-        font-weight: 500;
-    }
-
-    input {
-        width: 100%;
-        padding: 0.8rem;
-        border: 2px solid #eee;
-        border-radius: 10px;
-        transition: border-color 0.3s ease;
-        font-size: 1rem;
-    }
-
-    input:focus {
-        outline: none;
-        border-color: var(--primary-color);
-    }
-
-    button {
-        width: 100%;
-        padding: 1rem;
-        background: var(--primary-color);
-        color: rgb(255, 255, 255);
-        border: none;
-        border-radius: 10px;
-        font-size: 1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    button:hover {
-        background: var(--secondary-color);
-        transform: translateY(-2px);
-    }
-
-    .form-footer {
-        text-align: center;
-        margin-top: 1.5rem;
-    }
-
-    .form-footer a {
-        color: var(--primary-color);
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
-
-    .form-footer a:hover {
-        color: var(--secondary-color);
-    }
-
-    .form-footer p {
-        margin-top: 1rem;
-        color: var(--text-color);
-    }
-</style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const panels = document.getElementsByClassName('panels');
-        const toggleButtons = document.querySelectorAll('.toggle-panel');
-
-        toggleButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const targetPanel = button.getAttribute('data-panel');
+                <!-- <div class="input-box">
+                    <label for="phone">Celular</label>
+                    <input 
+                        id="phone" 
+                        type="tel" 
+                        name="phone" 
+                        placeholder="(99) 99999-9999"
+                        pattern="\(\d{2}\)\s\d{5}-\d{4}"
+                        maxlength="15"
+                        onkeyup="handlePhone(event)"
+                        required
+                    >
+                </div> -->
                 
-                (panels[0] as HTMLElement).style.transition = 'transform 0.5s ease';
-                (panels[0] as HTMLElement).style.transform = targetPanel === 'register'
-                    ? 'translateX(-50%)' 
-                    : 'translateX(0)';
-            });
-        });
-    });
-</script>
+
+                <div class="input-box">
+                    <label for="password">Senha</label>
+                    <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
+                </div>
+
+
+                <div class="input-box">
+                    <label for="confirmPassword">Confirme sua Senha</label>
+                    <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Digite sua senha novamente" required>
+                </div>
+
+            </div>
+
+            <!-- <div class="gender-inputs">
+                <div class="gender-title">
+                    <h6>Genero</h6>
+                </div>
+
+                <div class="gender-group">
+                    <div class="gender-input">
+                        <input id="female" type="radio" name="gender">
+                        <label for="female">Feminino</label>
+                    </div>
+
+                    <div class="gender-input">
+                        <input id="male" type="radio" name="gender">
+                        <label for="male">Masculino</label>
+                    </div>
+
+                    <div class="gender-input">
+                        <input id="others" type="radio" name="gender">
+                        <label for="others">Outros</label>
+                    </div> -->
+
+                    <!-- <div class="gender-input">
+                        <input id="none" type="radio" name="gender">
+                        <label for="none">Prefiro nao dizer</label>
+                    </div> -->
+                <!-- </div>
+            </div> -->
+
+            <div class="continue-button">
+                <button><a href="#">Cadastrar</a> </button>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Open+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+       
+       --primary-color: #7C96AB;
+       --opacity-color-button: #597c99;
+       --secondary-color: #BFCCB5;
+       --accent-color: #EDC6B1;
+       --background-color: #F7F7F7;
+       --text-color: #2C3333;
+       --shadow-color: rgba(0, 0, 0, 0.1);
+   }
+
+* {
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+font-family: Georgia, serif;
+}
+
+body {
+width: 100%;
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+background: var(--background-color);
+}
+
+.container {
+width: 80%;
+height: 80vh;
+display: flex;
+box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
+}
+
+.form-image {
+width: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: var(--primary-color);
+padding: 1rem;
+}
+
+.form-image img {
+width: 31rem;
+}
+
+.form {
+width: 30%;
+display: flex;
+align-items: center;
+justify-content: center;
+justify-items: center;
+position: relative;
+left: 120px;
+background-color: #fff;
+padding: 3rem;
+}
+
+.form-header {
+margin-bottom: 3rem;
+display: flex;
+justify-content: space-between;
+}
+
+.login-button {
+display: flex;
+align-items: center;
+}
+
+.login-button button {
+border: none;
+background-color: var(--primary-color);
+padding: 0.4rem 1rem;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.login-button button:hover {
+background-color: var(--opacity-color-button);
+}
+
+.login-button button a {
+text-decoration: none;
+font-weight: 500;
+color: #fff;
+}
+
+.form-header h1::after {
+content: '';
+display: block;
+width: 5rem;
+height: 0.3rem;
+background-color: var(--primary-color);
+margin: 0 auto;
+position: absolute;
+border-radius: 10px;
+}
+
+.input-group {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+padding: 1rem 0;
+}
+
+.input-box {
+display: flex;
+flex-direction: column;
+margin-bottom: 1.1rem;
+}
+
+.input-box input {
+margin: 0.6rem 0;
+padding: 0.8rem 1.2rem;
+border: none;
+border-radius: 10px;
+box-shadow: 1px 1px 6px #0000001c;
+font-size: 0.8rem;
+}
+
+.input-box input:hover {
+background-color: #eeeeee75;
+}
+
+.input-box input:focus-visible {
+outline: 1px solid var(--primary-color);
+}
+
+.input-box label,
+.gender-title h6 {
+font-size: 0.75rem;
+font-weight: 600;
+color: #000000c0;
+}
+
+.input-box input::placeholder {
+color: #000000be;
+}
+
+.gender-group {
+display: flex;
+justify-content: space-between;
+margin-top: 0.62rem;
+padding: 0 .5rem;
+}
+
+.gender-input {
+display: flex;
+align-items: center;
+}
+
+.gender-input input {
+margin-right: 0.35rem;
+}
+
+.gender-input label {
+font-size: 0.81rem;
+font-weight: 600;
+color: #000000c0;
+}
+
+.continue-button button {
+
+
+border: none;
+background-color: var(--primary-color);
+padding: 0.62rem;
+border-radius: 5px;
+cursor: pointer;
+}
+
+.continue-button button:hover {
+background-color: var(--opacity-color-button);
+}
+
+.continue-button button a {
+text-decoration: none;
+font-size: 0.93rem;
+font-weight: 500;
+color: #fff;
+}
+
+@media screen and (max-width: 1330px) {
+.form-image {
+    display: none;
+}
+.container {
+    width: 50%;
+}
+.form {
+    width: 100%;
+}
+}
+
+@media screen and (max-width: 1064px) {
+.container {
+    width: 90%;
+    height: auto;
+}
+.input-group {
+    flex-direction: column;
+    z-index: 5;
+    padding-right: 5rem;
+    max-height: 10rem;
+    overflow-y: scroll;
+    flex-wrap: nowrap;
+}
+.gender-inputs {
+    margin-top: 2rem;
+}
+.gender-group {
+    flex-direction: column;
+}
+.gender-title h6 {
+    margin: 0;
+}
+.gender-input {
+    margin-top: 0.5rem;
+}
+}
+</style>

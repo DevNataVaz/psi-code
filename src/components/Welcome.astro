@@ -8,7 +8,7 @@ import { Image } from 'astro:assets';
             <div class="logo">Psi Jess</div>
             <div class="nav-links">
                 <a href="/login">Área do Paciente</a>
-                <a href="/about" class="highlight">Sobre</a>
+                <a href="/auth" class="highlight">Comece aqui!</a>
             </div>
         </nav>
     </header>
@@ -18,7 +18,7 @@ import { Image } from 'astro:assets';
             <div class="hero-content">
                 <Image 
                     src="/src/assets/loginsvg.svg" 
-                    alt="Welcome illustration" 
+                    alt="Imagem de login" 
                     width={400} 
                     height={300}
                     class="hero-image"
@@ -45,6 +45,7 @@ import { Image } from 'astro:assets';
 
     .container {
         min-height: 100vh;
+        max-width: 100%;
         background-color: var(--background-color);
         font-family: 'Segoe UI', system-ui, sans-serif;
     }
