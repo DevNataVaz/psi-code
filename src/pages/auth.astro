@@ -4,68 +4,97 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout />
 <body>
-
-    <div class="container" id="container">
-        <div class="form-container sign-up-container">
-            <form action="#">
-                <h1>Criar Conta</h1>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f" style="color: #243B55;"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g" style="color: #243B55;"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in" style="color: #243B55;"></i></a>
-                </div>
-                <span>ou use seu email para cadastro</span>
-                <div class="infield">
-                    <input type="text" placeholder="Nome" />
-                    <label></label>
-                </div>
-                <div class="infield">
-                    <input type="email" placeholder="Email" name="eMail"/>
-                    <label></label>
-                </div>
-                <div class="infield">
-                    <input type="password" placeholder="Senha" />
-                    <label></label>
-                </div>
-                <button>Criar</button>
-            </form>
-        </div>
-        <div class="form-container sign-in-container">
-            <form action="#">
-                <h1>Entrar</h1>
-                <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>ou use seu email para login</span>
-                <div class="infield">
-                    <input type="email" placeholder="Email" name="email"/>
-                    <label></label>
-                </div>
-                <div class="infield">
-                    <input type="password" placeholder="Senha" />
-                    <label></label>
-                </div>
-                <a href="#" class="forgot">Esqueceu a senha?</a>
-                <button>Entrar</button>
-            </form>
-        </div>
-        <div class="overlay-container" id="overlayCon">
-            <div class="overlay">
-                <div class="overlay-panel overlay-left">
-                    <h1>Bem vindo(a) de volta!</h1>
-                    <p>Caso ja tenha cadastro, faça login aqui!</p>
-                    <button class="btnLogin">Entrar</button>
-                </div>
-                <div class="overlay-panel overlay-right">
-                    <h1>Olá, Paciente!</h1>
-                    <p>Novo por aqui? Insira seus dados aqui!</p>
-                    <button class="btnCadastro">Criar conta</button>
-                </div>
+ 
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form action="#" class="sign-in-form">
+            <h2 class="title">Login</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Username" />
             </div>
-            <button id="overlayBtn"></button>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Senha" />
+            </div>
+            <input type="submit" value="Login" class="btn solid" />
+            <p class="social-text">Ou faça login com plataformas sociais</p>
+            <div class="social-media">
+              <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-google"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </form>
+          <form action="#" class="sign-up-form">
+            <h2 class="title">Cadastro</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Username" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-envelope"></i>
+              <input type="email" placeholder="Email" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Senha" />
+            </div>
+            <input type="submit" class="btn" value="Cadastro" />
+            <p class="social-text">Ou inscreva-se com plataformas sociais</p>
+            <div class="social-media">
+              <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-google"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </form>
         </div>
+      </div>
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>Novo aqui?</h3>
+            <p>
+              clica aqui que te ajudo com cadastro!
+            </p>
+            <button class="btn transparent" id="sign-up-btn">
+              Cadastro
+            </button>
+          </div>
+          <img src="img/log.svg" class="image" alt="" />
+        </div>
+        <div class="panel right-panel">
+          <div class="content">
+            <h3>Ja tem cadastro?</h3>
+            <p>
+              Clique aqui para fazer login!
+            </p>
+            <button class="btn transparent" id="sign-in-btn">
+              Login
+            </button>
+          </div>
+          <img src="img/register.svg" class="image" alt="" />
+        </div>
+      </div>
     </div>
 </body>
 
